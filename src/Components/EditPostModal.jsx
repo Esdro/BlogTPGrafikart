@@ -13,7 +13,7 @@ export function EditPostModal({post, onClose}) {
             body: data,
         }).then(r => r.json()).then(r => {
             console.log(r)
-           // onClose?.()
+            onClose?.()
         }).catch(e => console.log(e));
 
     }

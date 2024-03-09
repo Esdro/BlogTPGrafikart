@@ -8,7 +8,7 @@ export function EditPostModal({post, onClose}) {
     function handleSubmission(e) {
         e.preventDefault();
         const data = new FormData(e.target);
-        fetch("https://jsonplaceholder.typicode.com/posts?id=" + post.id, {
+        fetch("https://jsonplaceholder.typicode.com/posts/" + post.id, {
             method: "PUT",
             body: data,
         }).then(r => r.json()).then(r => {

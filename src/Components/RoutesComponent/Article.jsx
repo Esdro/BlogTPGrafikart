@@ -3,6 +3,7 @@ import {Spinner} from "../Utilities/Spinner.jsx";
 import {Alert} from "../Utilities/Alert.jsx";
 import { useDocumentTitle, useToggle } from "@uidotdev/usehooks";
 import {Button} from "../Utilities/Button.jsx";
+import {EditPostModal} from "../EditPostModal.jsx";
 
 /**
  * Page qui affiche un article
@@ -17,6 +18,7 @@ const [editionMode, setEditionMode] = useToggle(false);
 
     useDocumentTitle(`Mon blog |  ${ data && data.title}`);
 
+   // console.log(editionMode)
     if (loading) return (
         <div className=" row align-items-center justify-content-center m-5">
             <Spinner/>
@@ -48,7 +50,9 @@ const [editionMode, setEditionMode] = useToggle(false);
 
             <div className="row">
                 <div className="edit-article">
-                    <Button variant={'info'} onclick={setEditionMode}  > Editer l'article   </Button>
+
+                    {editionMode && <EditPostModal post={data} onClose={setEditionMode} /> }
+                    <Button variant={'info'} onClick={setEditionMode}  > Editer l'article   </Button>
                 </div>
             </div>
 

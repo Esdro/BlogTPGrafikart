@@ -7,6 +7,9 @@ import {Header} from "./Components/Utilities/Header.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import { useDocumentTitle } from "@uidotdev/usehooks";
+import  './App.css'
+import {Alert} from "./Components/Utilities/Alert.jsx";
+import {ErrorBoundary} from "react-error-boundary";
 function App() {
 
   const {page, param} = useHashNavigation()
@@ -16,15 +19,24 @@ function App() {
     useDocumentTitle("Mon blog | Accueil ");
   return (
       <>
-          <Header page={page}/>
-
-          {currentPage}
+            <Header page={page}/>
+        <ErrorBoundary FallbackComponent={FallBack}>
+            {currentPage}
+        </ErrorBoundary>
       </>
 
   )
 }
 
 
+
+function FallBack (err) {
+    return <>
+       <div className="container p-2">
+           <Alert message={err.toString()} type={'danger'} />
+       </div>
+    </>
+}
 function GetPageContent(page, param) {
 
 

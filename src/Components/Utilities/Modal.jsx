@@ -3,7 +3,7 @@ import {useEffect, useRef} from "react";
 /**
  * Native dialog modal
  * @param children
- * @param {callback} onClose
+ * @param  onClose
  * @returns {JSX.Element}
  * @constructor
  */
@@ -23,7 +23,7 @@ export function Modal({children, onClose}) {
 
     return <dialog
     ref={dialogRef}
-    className="Modal"
+    className={' md-custom '}
     onClose={handleClose}
     onCancel={handleClose}>
         {children}
